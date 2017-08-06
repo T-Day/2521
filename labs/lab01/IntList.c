@@ -90,10 +90,35 @@ void IntListInsert(IntList L, int v)
 }
 
 // insert an integer into correct place in a sorted list
-void IntListInsertInOrder(IntList L, int v)
-{
-	// This is INCORRECT
-	IntListInsert(L, v);
+void IntListInsertInOrder(IntList L, int v) {
+	 struct IntListNode *n;
+
+         // checking that there is a list
+	 assert(L != NULL);
+	 n = newIntListNode(v);
+         
+         // empty list
+	 if (L->first == NULL) {
+	    L->first = L->last = n;
+         } else {
+            // first is larger than v
+            if (L->first->data >= v) {
+               n->next = L->first;
+               L->first = n;
+               L->size++;
+               return;
+            }
+            // everything else
+            struct IntListNode *tmp;
+            for (tmp = L->first; tmp->next != NULL && tmp->next->data <= v; tmp = tmp->next) {
+            }
+            if (tmp->next == NULL) {
+               L->last = n;
+            }
+            n->next = tmp->next;
+            tmp->next = n;
+	}
+	L->size++;
 }
 
 // delete first occurrence of v from a list

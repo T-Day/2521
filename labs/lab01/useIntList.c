@@ -10,17 +10,17 @@ int main(int argc, char *argv[])
 {
 	IntList myList, myOtherList;
 
-	int verbose = (argc == 2 && strcmp(argv[1],"-v") == 0);
+//	int verbose = (argc == 2 && strcmp(argv[1],"-v") == 0);
 
 	myList = getIntList(stdin);
-	if (verbose) {
-		printf("Original:\n");
-		showIntList(myList);
-	}
+//	if (verbose) {
+//		printf("Original:\n");
+//		showIntList(myList);
+//	}
 	assert(IntListOK(myList));
 
 	myOtherList = IntListSortedCopy(myList);
-	if (verbose) printf("Sorted:\n");
+//	if (verbose) printf("Sorted:\n");
 	showIntList(myOtherList);
 	assert(IntListOK(myOtherList));
 	assert(IntListIsSorted(myOtherList));
